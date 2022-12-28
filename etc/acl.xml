@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created By : Magebytes Pvt. Ltd.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::content">
+                    <resource id="Magebytes_ZipCodeValidator::manage_label" title="Magebytes" sortOrder="10">
+                        <resource id="Magebytes_ZipCodeValidator::grid_list" title="Manage ZipCodeValidators" sortOrder="10" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created By : Magebytes Pvt. Ltd.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magebytes_ZipCodeValidator::manage_label" title="Magebytes" module="Magebytes_ZipCodeValidator" sortOrder="10" resource="Magebytes_ZipCodeValidator::manage_label" />
+        <add id="Magebytes_ZipCodeValidator::grid_list" title="Magebytes ZipCode" module="Magebytes_ZipCodeValidator" sortOrder="10" parent="Magebytes_ZipCodeValidator::manage_label" action="grid/zipcode/index" resource="Magebytes_ZipCodeValidator::grid_list"/>
+    </menu>
+</config>

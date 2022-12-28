@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created By : Magebytes Pvt. Ltd.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="grid" frontName="grid">
+            <module name="Magebytes_ZipCodeValidator" />
+        </route>
+    </router>
+</config>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Created By : Magebytes Pvt. Ltd.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">grid_zipcode_import_form.magebytes_zipcodevalidator_crud_operation_source</item>
+            <item name="deps" xsi:type="string">grid_zipcode_import_form.magebytes_zipcodevalidator_crud_operation_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Import Data in CSV Format</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">grid_zipcode_import_form</item>
+        </item>
+        <item name="spinner" xsi:type="string">general_information</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Magebytes\ZipCodeValidator\Block\Adminhtml\Index\Edit\Button\Back</item>
+            <item name="save" xsi:type="string">Magebytes\ZipCodeValidator\Block\Adminhtml\Index\Edit\Button\Upload</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <dataSource name="magebytes_zipcodevalidator_crud_operation_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magebytes\ZipCodeValidator\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">magebytes_zipcodevalidator_crud_operation_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                 <item name="submit_url" xsi:type="url" path="*/*/read"/>
+              </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general_information">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Import Data in CSV Format</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="import_csv">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">file</item>
+                    <item name="label" xsi:type="string" translate="true">Import CSV</item>
+                    <item name="formElement" xsi:type="string">file</item>
+                    <item name="source" xsi:type="string">import_csv</item>
+                    <item name="dataScope" xsi:type="string">import_csv</item>
+                </item>
+            </argument>
+        </field>
+
+        <container name="custom_tab_container">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="string">1</item>
+                </item>
+            </argument>
+            <htmlContent name="html_content">
+                <argument name="block" xsi:type="object">Magebytes\ZipCodeValidator\Block\Adminhtml\CustomTab</argument>
+            </htmlContent>
+        </container>
+        
+    </fieldset>
+</form>

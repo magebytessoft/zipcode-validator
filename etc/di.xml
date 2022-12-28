@@ -1,0 +1,24 @@
+<!--
+/**
+ * Created By : Magebytes Pvt. Ltd.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magebytes_zipCodeValidator_zipcode_listing_data_source" xsi:type="string">Magebytes\ZipCodeValidator\Model\ResourceModel\ZipCode\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magebytes\ZipCodeValidator\Model\ResourceModel\ZipCode\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mb_zipcodevalidator</argument>
+            <argument name="resourceModel" xsi:type="string">Magebytes\ZipCodeValidator\Model\ResourceModel\ZipCode</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Page\Config\Renderer">
+        <plugin name="Magebytes_ZipCodeValidator::DisableJsMixins" type="Magebytes\ZipCodeValidator\Plugin\Framework\View\Page\Config\Renderer\DisableJsMixins" />
+    </type>
+</config>

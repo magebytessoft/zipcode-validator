@@ -1,0 +1,17 @@
+{
+    "mb_zipcodevalidator": {
+        "column": {
+            "entity_id": true,
+            "country_id": true,
+            "state": true,
+            "city": true,
+            "zip_code": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Created By : Magebytes Pvt. Ltd.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+   <table name="mb_zipcodevalidator" resource="default" engine="innodb" comment="Mg ZipCodeValidator">
+      <column xsi:type="int" name="entity_id" padding="7" unsigned="false" nullable="false" identity="true" comment="ID" />
+      <column xsi:type="varchar" name="country_id" nullable="false" length="20" comment="Country" />
+      <column xsi:type="varchar" name="state" nullable="false" length="20" comment="State" />
+      <column xsi:type="varchar" name="city" comment="City" nullable="false" />
+      <column xsi:type="varchar" name="zip_code" nullable="false" length="255" comment="ZipCode" />
+      <column xsi:type="boolean" name="status" comment="Status" nullable="false" />
+      <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+      <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At"/>
+      <constraint xsi:type="primary" referenceId="PRIMARY">
+         <column name="entity_id" />
+      </constraint>
+   </table>
+</schema>

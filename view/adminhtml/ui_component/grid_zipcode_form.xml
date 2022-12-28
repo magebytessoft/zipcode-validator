@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Created By : Magebytes Pvt. Ltd.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">grid_zipcode_form.magebytes_zipcodevalidator_crud_operation_source</item>
+            <item name="deps" xsi:type="string">grid_zipcode_form.magebytes_zipcodevalidator_crud_operation_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">grid_zipcode_form</item>
+        </item>
+        <item name="spinner" xsi:type="string">general_information</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Magebytes\ZipCodeValidator\Block\Adminhtml\Index\Edit\Button\Back</item>
+            <item name="delete" xsi:type="string">Magebytes\ZipCodeValidator\Block\Adminhtml\Index\Edit\Button\Delete</item>
+            <item name="reset" xsi:type="string">Magebytes\ZipCodeValidator\Block\Adminhtml\Index\Edit\Button\Reset</item>
+            <item name="save" xsi:type="string">Magebytes\ZipCodeValidator\Block\Adminhtml\Index\Edit\Button\Save</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <dataSource name="magebytes_zipcodevalidator_crud_operation_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magebytes\ZipCodeValidator\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">magebytes_zipcodevalidator_crud_operation_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                 <item name="submit_url" xsi:type="url" path="*/*/save"/>
+              </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general_information">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">General Information</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="country_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Directory\Model\Config\Source\Country</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Country</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">store</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/country</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="state">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">State/Region</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">store</item>
+                    <item name="sortOrder" xsi:type="number">15</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="state">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Directory\Model\ResourceModel\Region\Collection</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">State/Region</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">store</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="customEntry" xsi:type="string">state</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="filterBy" xsi:type="array">
+                        <item name="target" xsi:type="string">${ $.provider }:${ $.parentScope }.country_id</item>
+                        <item name="field" xsi:type="string">country_id</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+         <field name="city">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">City</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">city</item>
+                    <item name="dataScope" xsi:type="string">city</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="zip_code">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Zip Code</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">zip_code</item>
+                    <item name="dataScope" xsi:type="string">zip_code</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magebytes\ZipCodeValidator\Model\Status</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">integer</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">zipcode</item>
+                    <item name="dataScope" xsi:type="string">status</item>
+                </item>
+            </argument>
+        </field>
+        
+    </fieldset>
+</form>
