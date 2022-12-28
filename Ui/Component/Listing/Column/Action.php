@@ -9,8 +9,8 @@ class Action extends \Magento\Ui\Component\Listing\Columns\Column
 {
     protected $urlBuilder;
 
-    const URL_EDIT_PATH = 'grid/zipcode/edit';
-    const URL_DELETE_PATH = 'grid/zipcode/delete';
+    const URL_EDIT_PATH = 'mbzipcode/zipcode/edit';
+    const URL_DELETE_PATH = 'mbzipcode/zipcode/delete';
 
     public function __construct(
         \Magento\Framework\UrlInterface $urlBuilder,

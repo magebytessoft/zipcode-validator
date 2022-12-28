@@ -6,8 +6,8 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">magebytes_zipCodeValidator_zipcode_listing.magebytes_zipCodeValidator_zipcode_listing_data_source</item>
-            <item name="deps" xsi:type="string">magebytes_zipCodeValidator_zipcode_listing.magebytes_zipCodeValidator_zipcode_listing_data_source</item>
+            <item name="provider" xsi:type="string">mb_zipcode_listing.mb_zipcode_listing_data_source</item>
+            <item name="deps" xsi:type="string">mb_zipcode_listing.mb_zipcode_listing_data_source</item>
         </item>
         <item name="spinner" xsi:type="string">spinner_columns</item>
         <item name="buttons" xsi:type="array">
@@ -15,20 +15,20 @@
                 <item name="name" xsi:type="string">import</item>
                 <item name="label" xsi:type="string" translate="true">Import CSV</item>
                 <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="url" path="grid/zipcode/import" />
+                <item name="url" xsi:type="url" path="mbzipcode/zipcode/import" />
             </item>
             <item name="add" xsi:type="array">
                 <item name="name" xsi:type="string">add</item>
                 <item name="label" xsi:type="string" translate="true">Add Data</item>
                 <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="url" path="grid/zipcode/add" />
+                <item name="url" xsi:type="url" path="mbzipcode/zipcode/add" />
             </item>
         </item>
     </argument>
     <dataSource name="nameOfDataSource">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
-            <argument name="name" xsi:type="string">magebytes_zipCodeValidator_zipcode_listing_data_source</argument>
+            <argument name="name" xsi:type="string">mb_zipcode_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
@@ -64,10 +64,10 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="grid/zipcode/massDelete"/>
+                        <item name="url" xsi:type="url" path="mbzipcode/zipcode/massDelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Delete Data</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected zipcodes?</item>
                         </item>
                     </item>
                 </argument>

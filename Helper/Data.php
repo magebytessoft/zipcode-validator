@@ -17,27 +17,6 @@ use Magento\Store\Model\ScopeInterface;
 
 class Data extends AbstractHelper
 {
-    /**
-     *
-     */
-    const CONFIG_IS_ENABLED = 'zipcodevalidator/magebytes_zipcodes/is_enabled';
-    /**
-     *
-     */
-    const CONFIG_ZIPCODES = 'zipcodevalidator/magebytes_zipcodes/zipcodes';
-    /**
-     *
-     */
-    const CONFIG_SUCCESS_MESSAGE = 'zipcodevalidator/magebytes_zipcodes/success_message_code';
-    /**
-     *
-     */
-    const CONFIG_ERROR_MESSAGE = 'zipcodevalidator/magebytes_zipcodes/error_message_code';
-
-    /**
-     * @var ScopeConfig
-     */
-    protected $_scopeConfig;
 
     /**
      * Data constructor.
@@ -48,19 +27,16 @@ class Data extends AbstractHelper
         Context $context
     ) {
         parent::__construct($context);
-        $this->_scopeConfig = $context->getScopeConfig();
+        // $this->_scopeConfig = $context->getScopeConfig();
     }
 
     /**
      * @param $storePath
      * @return mixed
      */
-    public function getStoreConfig($storePath)
+    public function getConfigValue($field)
     {
-        return $this->_scopeConfig->getValue(
-            $storePath,
-            ScopeInterface::SCOPE_STORE
-        );
+        return $this->scopeConfig->getValue($field, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -68,7 +44,7 @@ class Data extends AbstractHelper
      */
     public function getZipCodes()
     {
-        return trim(self::getStoreConfig(self::CONFIG_ZIPCODES));
+        return trim($this->getConfigValue('zipcodevalidator/magebytes_zipcodes/zipcodes'));
     }
 
     /**
@@ -76,7 +52,7 @@ class Data extends AbstractHelper
      */
     public function getSuccessMessage()
     {
-        return self::getStoreConfig(self::CONFIG_SUCCESS_MESSAGE);
+        return $this->getConfigValue('zipcodevalidator/magebytes_zipcodes/success_message_code');
     }
 
     /**
@@ -84,7 +60,7 @@ class Data extends AbstractHelper
      */
     public function getErrorMessage()
     {
-        return self::getStoreConfig(self::CONFIG_ERROR_MESSAGE);
+        return $this->getConfigValue('zipcodevalidator/magebytes_zipcodes/error_message_code');
     }
 
     /**
@@ -92,6 +68,6 @@ class Data extends AbstractHelper
      */
     public function getIsActive()
     {
-        return self::getStoreConfig(self::CONFIG_IS_ENABLED);
+        return $this->getConfigValue('zipcodevalidator/magebytes_zipcodes/is_enabled');
     }
 }

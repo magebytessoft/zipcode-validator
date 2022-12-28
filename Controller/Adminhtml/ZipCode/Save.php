@@ -10,16 +10,16 @@ use Magento\Backend\Model\Session;
 
 class Save extends \Magento\Backend\App\Action
 {
-    protected $Custommodel;
+    protected $zipCode;
     protected $adminsession;
 
     public function __construct(
         Action\Context $context,
-        ZipCode $Custommodel,
+        ZipCode $zipCode,
         Session $adminsession
     ) {
         parent::__construct($context);
-        $this->Custommodel = $Custommodel;
+        $this->zipCode = $zipCode;
         $this->adminsession = $adminsession;
     }
 
@@ -32,23 +32,23 @@ class Save extends \Magento\Backend\App\Action
             $id = $this->getRequest()->getParam('entity_id');
 
             if ($id) {
-                $this->Custommodel->load($id);
+                $this->zipCode->load($id);
             }
 
-            $this->Custommodel->setData($data);
+            $this->zipCode->setData($data);
 
             try {
-                $this->Custommodel->save();
-                $this->messageManager->addSuccess(__('The data has been saved.'));
+                $this->zipCode->save();
+                $this->messageManager->addSuccess(__('The zipcode has been saved.'));
                 $this->adminsession->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
                     if ($this->getRequest()->getParam('back') == 'add') {
                         return $resultRedirect->setPath('*/*/add');
                     } else {
                         return $resultRedirect->setPath(
-                            'grid/zipcode/index',
+                            'mbzipcode/zipcode/index',
                             [
-                                'entity_id' => $this->Custommodel->getId(),
+                                'entity_id' => $this->zipCode->getId(),
                                 '_current' => true
                             ]
                         );
@@ -60,7 +60,7 @@ class Save extends \Magento\Backend\App\Action
             } catch (\RuntimeException $e) {
                 $this->messageManager->addError($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addException($e, __('Something went wrong while saving the data.'));
+                $this->messageManager->addException($e, __('Something went wrong while saving the zipcode.'));
             }
 
             $this->_getSession()->setFormData($data);

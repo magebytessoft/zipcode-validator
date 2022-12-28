@@ -8,14 +8,14 @@ use Magento\Backend\App\Action;
 
 class Delete extends Action
 {
-    protected $modelJob;
+    protected $zipCode;
 
     public function __construct(
         Action\Context $context,
-        \Magebytes\ZipCodeValidator\Model\ZipCode $model
+        \Magebytes\ZipCodeValidator\Model\ZipCode $zipCode
     ) {
         parent::__construct($context);
-        $this->modelJob = $model;
+        $this->zipCode = $zipCode;
     }
 
     /**
@@ -23,7 +23,7 @@ class Delete extends Action
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('grid_customform::index_delete');
+        return $this->_authorization->isAllowed('Magebytes_ZipCodeValidator::delete');
     }
 
     /**
@@ -38,17 +38,17 @@ class Delete extends Action
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id) {
             try {
-                $model = $this->modelJob;
+                $model = $this->zipCode;
                 $model->load($id);
                 $model->delete();
-                $this->messageManager->addSuccess(__('Record deleted'));
+                $this->messageManager->addSuccess(__('ZipCode deleted'));
                 return $resultRedirect->setPath('*/*/');
             } catch (\Exception $e) {
                 $this->messageManager->addError($e->getMessage());
                 return $resultRedirect->setPath('*/*/edit', ['entity_id' => $id]);
             }
         }
-        $this->messageManager->addError(__('Record does not exist'));
+        $this->messageManager->addError(__('ZipCode does not exist'));
         return $resultRedirect->setPath('*/*/');
     }
 }

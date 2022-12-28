@@ -10,7 +10,7 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::content">
                     <resource id="Magebytes_ZipCodeValidator::manage_label" title="Magebytes" sortOrder="10">
-                        <resource id="Magebytes_ZipCodeValidator::grid_list" title="Manage ZipCodeValidators" sortOrder="10" />
+                        <resource id="Magebytes_ZipCodeValidator::zipcode_list" title="Manage ZipCodeValidators" sortOrder="10" />
                     </resource>
                 </resource>
             </resource>

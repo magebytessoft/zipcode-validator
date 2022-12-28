@@ -51,7 +51,8 @@ class Read extends \Magento\Backend\App\Action
         $csvData = $this->getCsvData($file);
     }
 
-    public function getCsvData($file){
+    public function getCsvData($file)
+    {
         $csvDataAll = $this->csv->getData($file['tmp_name']);
         $resultRedirect = $this->resultRedirectFactory->create();
 
@@ -73,7 +74,7 @@ class Read extends \Magento\Backend\App\Action
 
                 if (!$modelData) 
                 {
-                    $this->_redirect('grid/zipcode/read');
+                    $this->_redirect('mbzipcode/zipcode/read');
                     return;
                 }
 
@@ -82,13 +83,13 @@ class Read extends \Magento\Backend\App\Action
                     $rowData = $this->Custommodel->create();
                     $rowData->setData($modelData);
                     $rowData->save();
-                    $this->messageManager->addSuccess(__('Row data has been successfully saved.'));
-                    } catch (\Exception $e) 
-                    {
-                        $this->messageManager->addError(__($e->getMessage()));
-                    }
-                    $this->_redirect('grid/zipcode/index');
+                    $this->messageManager->addSuccess(__('ZipCode has been successfully saved.'));
+                } catch (\Exception $e) 
+                {
+                    $this->messageManager->addError(__($e->getMessage()));
+                }
+                $this->_redirect('mbzipcode/zipcode/index');
+            }
         }
     }
-}
 }

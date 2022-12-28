@@ -30,7 +30,7 @@ class Index extends \Magento\Backend\App\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Magebytes_ZipCodeValidator::grid_list');
+        $resultPage->setActiveMenu('Magebytes_ZipCodeValidator::zipcode_list');
         $resultPage->getConfig()->getTitle()->prepend(__('Magebytes Zipcodes'));
         return $resultPage;
     }
@@ -42,6 +42,6 @@ class Index extends \Magento\Backend\App\Action
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Magebytes_ZipCodeValidator::grid_list');
+        return $this->_authorization->isAllowed('Magebytes_ZipCodeValidator::zipcode_list');
     }
 }

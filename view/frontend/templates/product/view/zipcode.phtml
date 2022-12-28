@@ -35,7 +35,7 @@ require([
 		var formData = new FormData();
 		formData.append('zipcode', $('#form-product-zipcode input[name="zipcode"]').val());
 		$.ajax({
-			url: '<?php echo $this->getUrl('zipcodevalidator/index/index',['id'=> $product->getId()]) ?>',
+			url: '<?php echo $this->getUrl('zipcodevalidator/index/index', ['id'=> $product->getId()]) ?>',
 			data: formData,
 			processData: false,
 			contentType: false,

@@ -75,8 +75,7 @@ class Index extends Action
             $zipData = $collection->getData();
             if($zipData){
                 $response['type'] = 'success';
-                $response['message'] = __($this->dataHelper->getSuccessMessage(),$zipcode); 
-                $response['isActive'] = __($this->dataHelper->getIsActive(),$zipcode); 
+                $response['message'] = __($this->dataHelper->getSuccessMessage(),$zipcode);  
                 $response['zipValid'] = $zipData;
             } else {
                 $response['type'] = 'error';

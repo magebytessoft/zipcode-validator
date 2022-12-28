@@ -7,7 +7,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="magebytes_zipCodeValidator_zipcode_listing_data_source" xsi:type="string">Magebytes\ZipCodeValidator\Model\ResourceModel\ZipCode\Collection</item>
+                <item name="mb_zipcode_listing_data_source" xsi:type="string">Magebytes\ZipCodeValidator\Model\ResourceModel\ZipCode\Collection</item>
             </argument>
         </arguments>
     </type>

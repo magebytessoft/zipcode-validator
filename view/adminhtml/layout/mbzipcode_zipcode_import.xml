@@ -8,7 +8,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="grid_zipcode_import_form"/>
+            <uiComponent name="mb_zipcode_csv_form"/>
         </referenceContainer>
     </body>
 </page>

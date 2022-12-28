@@ -26,7 +26,7 @@ class Save extends Generic implements ButtonProviderInterface
                     'buttonAdapter' => [
                         'actions' => [
                             [
-                                'targetName' => 'grid_zipcode_form.grid_zipcode_form',
+                                'targetName' => 'mb_zipcode_form.mb_zipcode_form',
                                 'actionName' => 'save',
                                 'params' => [
                                     false
@@ -57,7 +57,7 @@ class Save extends Generic implements ButtonProviderInterface
                     'buttonAdapter' => [
                         'actions' => [
                             [
-                                'targetName' => 'grid_zipcode_form.grid_zipcode_form',
+                                'targetName' => 'mb_zipcode_form.mb_zipcode_form',
                                 'actionName' => 'save',
                                 'params' => [
                                     true

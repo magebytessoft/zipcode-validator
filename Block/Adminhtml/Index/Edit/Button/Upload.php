@@ -26,7 +26,7 @@ class Upload extends Generic implements ButtonProviderInterface
                     'buttonAdapter' => [
                         'actions' => [
                             [
-                                'targetName' => 'grid_zipcode_import_form.grid_zipcode_import_form',
+                                'targetName' => 'mb_zipcode_csv_form.mb_zipcode_csv_form',
                                 'actionName' => 'save',
                                 'params' => [
                                     false
@@ -57,7 +57,7 @@ class Upload extends Generic implements ButtonProviderInterface
                     'buttonAdapter' => [
                         'actions' => [
                             [
-                                'targetName' => 'grid_zipcode_import_form.grid_zipcode_import_form',
+                                'targetName' => 'mb_zipcode_csv_form.mb_zipcode_csv_form',
                                 'actionName' => 'save',
                                 'params' => [
                                     true

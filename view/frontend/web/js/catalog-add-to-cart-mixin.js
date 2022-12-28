@@ -14,28 +14,6 @@ define([
             addToCartButtonDisabledClass: 'disabled'
         },
 
-        ajaxSubmit: function(form) 
-        {
-            var self = this;
-            $(self.options.minicartSelector).trigger('contentLoading');
-            self.disableAddToCartButton(form);
-            self.enableAddToCartButton(form);
-
-            $.ajax({
-                url: form.attr('action'),
-                data: form.serialize(),
-                type: 'post',
-                dataType: 'json',
-                beforeSend: function() 
-                {
-                    if (self.isLoaderEnabled()) 
-                    {
-                        $('body').trigger(self.options.processStart);
-                    }
-                },
-            });
-        },
-
         /**
          * @param {String} form
          */

@@ -14,16 +14,16 @@ class MassDelete extends \Magento\Backend\App\Action
 {
     protected $filter;
     protected $collectionFactory;
-    protected $Jobmodel;
+    protected $zipCode;
 
     public function __construct(Context $context,
         Filter $filter,
         CollectionFactory $collectionFactory,
-        ZipCode $Jobmodel
+        ZipCode $zipCode
     ) {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
-        $this->Jobmodel = $Jobmodel;
+        $this->zipCode = $zipCode;
         parent::__construct($context);
     }
 
@@ -54,7 +54,7 @@ class MassDelete extends \Magento\Backend\App\Action
             $this->deleteById($item->getId());
             $delete++;
         }
-        $this->messageManager->addSuccess(__('A total of %1 Records have been deleted.', $delete));
+        $this->messageManager->addSuccess(__('A total of %1 ZipCodes have been deleted.', $delete));
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         return $resultRedirect->setPath('*/*/');
     }
@@ -65,7 +65,7 @@ class MassDelete extends \Magento\Backend\App\Action
      * @return [type]     [description]
      */
     public function deleteById($id){
-        $item = $this->Jobmodel->load($id);
+        $item = $this->zipCode->load($id);
         $item->delete();
         return;
     }
