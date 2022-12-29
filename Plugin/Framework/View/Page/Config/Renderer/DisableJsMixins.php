@@ -48,7 +48,6 @@ class DisableJsMixins
 
     /**
      * Disable Magebytes ZipCodeValidator js mixins if module is disabled
-     *
      * @param Renderer $subject
      * @param array $resultGroups
      * @return array

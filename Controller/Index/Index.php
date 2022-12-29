@@ -33,6 +33,7 @@ class Index extends Action
      * @param Context $context
      * @param ProductFactory $productFactory
      * @param DataHelper $dataHelper
+     * @param ZipFilter $zipFilter
      */
 
     public function __construct(
@@ -54,13 +55,6 @@ class Index extends Action
             $zipcode = $this->zipFilter->getZipCodeData();
             if(!$this->zipFilter->getZipCodeData()){
                 throw new \Exception("Pease enter the zipcode");
-            }
-
-            $productId = $this->getRequest()->getParam('id', 0);
-            $product = $this->productFactory->create()->load($productId);
-
-            if(!$product->getId()){
-                throw new \Exception("Product is not found");
             }
 
             $zipData = $this->zipFilter->getZipCollection()->getData();

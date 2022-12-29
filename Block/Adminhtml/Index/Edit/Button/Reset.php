@@ -11,8 +11,6 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 class Reset implements ButtonProviderInterface
 {
     /**
-     * get button data
-     *
      * @return array
      */
     public function getButtonData()

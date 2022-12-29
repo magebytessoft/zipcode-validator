@@ -38,8 +38,6 @@ class Generic
     }
 
     /**
-     * Generate url by route and parameters
-     *
      * @param   string $route
      * @param   array $params
      * @return  string

@@ -4,19 +4,19 @@
  * Created By : Magebytes Pvt. Ltd.
  */
 
-namespace Magebytes\ZipCodeValidator\Block\Product\View;
+namespace Magebytes\ZipCodeValidator\ViewModel;
 
 use Magento\Framework\Registry;
-use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Framework\View\Element\Template\Context;
 use Magebytes\ZipCodeValidator\Helper\Data as DataHelper;
 
 /**
  * Class Data
- * @package Magebytes\ZipCodeValidator\Block\Product\View
+ * @package Magebytes\ZipCodeValidator\ViewModel
  */
 
-class Data extends Template
+class Data implements ArgumentInterface
 {
     /**
      * @var Registry
@@ -35,7 +35,7 @@ class Data extends Template
         DataHelper $dataHelper,
         $data = []
     ) {
-        parent::__construct($context, $data);
+        // parent::__construct($context, $data);
         $this->_registry = $registry;
         $this->dataHelper = $dataHelper;
     }

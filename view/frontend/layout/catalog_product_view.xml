@@ -7,7 +7,11 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>        
         <referenceContainer name="product.info.main">
-            <block class="Magebytes\ZipCodeValidator\Block\Product\View\Data" after="product.info.review" name="magebytes.zipcodevalidator" template="product/view/zipcode.phtml" />
+            <block after="product.info.review" class="Magento\Framework\View\Element\Template" name="magebytes.zipcodevalidator" template="Magebytes_ZipCodeValidator::product/view/zipcode.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Magebytes\ZipCodeValidator\ViewModel\Data</argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>

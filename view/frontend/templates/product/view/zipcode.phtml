@@ -4,10 +4,11 @@
  */
 -->
 <?php
-$blockObj= $block->getLayout()->createBlock('Magebytes\ZipCodeValidator\Block\Product\View\Data');
-$product = $blockObj->getCurrentProduct();
-$isActive = $blockObj->getIsActive();
+/**@var Magebytes\ZipCodeValidator\ViewModel\Data $viewModel*/
+$viewModel = $block->getData('view_model');
 ?>
+<?php $product = $viewModel->getCurrentProduct()?>
+<?php $isActive = $viewModel->getIsActive()?>
 <?php if($product && $isActive == 1): ?>
 	<div class="zipchecker-product">
 		<form class="zipcheck" method="post" id="zipcheck" novalidate="novalidate">
@@ -39,7 +40,7 @@ require([
 		var formData = new FormData();
 		formData.append('zipcode', $('#zipcheck input[name="zipcode"]').val());
 		$.ajax({
-			url: '<?php echo $this->getUrl('zipcodevalidator/index/index', ['id'=> $product->getId()]) ?>',
+			url: '<?php echo $this->getUrl('zipcodevalidator/index/index'); ?>',
 			data: formData,
 			processData: false,
 			contentType: false,

@@ -12,8 +12,6 @@ use Magento\Ui\Component\Control\Container;
 class Save extends Generic implements ButtonProviderInterface
 {
     /**
-     * get button data
-     *
      * @return array
      */
     public function getButtonData()

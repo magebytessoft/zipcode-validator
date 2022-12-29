@@ -29,6 +29,7 @@ class Read extends \Magento\Backend\App\Action
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Framework\File\Csv                      $csv
      * @param \Magento\Framework\Filesystem\Driver\File        $file
+     * @param \Magebytes\ZipCodeValidator\Model\ZipCodeFactory $zipCodeFactory
      * @param array                                            $data
     */
     public function __construct(

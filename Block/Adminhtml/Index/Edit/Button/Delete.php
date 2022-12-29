@@ -16,11 +16,6 @@ class Delete extends Generic implements ButtonProviderInterface
      */
     protected $context;
 
-    /**
-     * @param Context $context
-     * @param AuthorRepositoryInterface $authorRepository
-     */
-
     public function __construct(
         Context $context
     ) {
@@ -28,8 +23,6 @@ class Delete extends Generic implements ButtonProviderInterface
     }
 
     /**
-     * get button data
-     *
      * @return array
      */
     public function getButtonData()
