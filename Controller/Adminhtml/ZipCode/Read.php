@@ -20,10 +20,10 @@ class Read extends \Magento\Backend\App\Action
      */
     protected $file;
 
-    protected $Custommodel;
-
-    protected $adminsession;
-
+    /**
+     * @var \Magebytes\ZipCodeValidator\Model\ZipCodeFactory
+     */
+    protected $zipCodeFactory;
 
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -34,14 +34,12 @@ class Read extends \Magento\Backend\App\Action
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\File\Csv $csv,
-        \Magebytes\ZipCodeValidator\Model\ZipCodeFactory $Custommodel,
-        \Magento\Backend\Model\Session $adminsession,
+        \Magebytes\ZipCodeValidator\Model\ZipCodeFactory $zipCodeFactory,
         \Magento\Framework\Filesystem\Driver\File $file
     ) {
         $this->csv = $csv;
         $this->file = $file;
-        $this->Custommodel = $Custommodel;
-        $this->adminsession = $adminsession;
+        $this->zipCodeFactory = $zipCodeFactory;
         parent::__construct($context);
     }
 
@@ -54,34 +52,28 @@ class Read extends \Magento\Backend\App\Action
     public function getCsvData($file)
     {
         $csvDataAll = $this->csv->getData($file['tmp_name']);
-        $resultRedirect = $this->resultRedirectFactory->create();
-
 
         foreach ($csvDataAll as $row => $data) 
         {
             if($row > 0) 
             {
-                $modelData = [
-                    'country_id' => $data[1],
-                    'state' => $data[2],
-                    'city' => $data[3],
-                    'zip_code' => $data[4],
-                    'status' => $data[5],
-                    'created_at' => $data[6],
-                    'updated_at' => $data[7],
+                $arrayData = [
+                    'country_id' => $data[0],
+                    'state' => $data[1],
+                    'city' => $data[2],
+                    'zip_code' => $data[3],
+                    'status' => $data[4]
                 ];
 
-
-                if (!$modelData) 
+                if (!$arrayData) 
                 {
                     $this->_redirect('mbzipcode/zipcode/read');
                     return;
                 }
 
                 try {
-                    
-                    $rowData = $this->Custommodel->create();
-                    $rowData->setData($modelData);
+                    $rowData = $this->zipCodeFactory->create();
+                    $rowData->setData($arrayData);
                     $rowData->save();
                     $this->messageManager->addSuccess(__('ZipCode has been successfully saved.'));
                 } catch (\Exception $e) 

@@ -3,9 +3,4 @@
  * Created By : Magebytes Pvt. Ltd.
  */
 -->
-<?php 
-$blockObj= $block->getLayout()->createBlock('Magebytes\ZipCodeValidator\Block\Adminhtml\StoreBaseUrl');
-$baseUrl = $blockObj->getStoreUrl();
-?>
-<button >Export CSV</button>
-<a href="<?php echo $baseUrl.'zipcodevalidator/index/exportcsv' ?>">Download Sample Data</a>
+<a href="<?php echo $this->getViewFileUrl('Magebytes_ZipCodeValidator::zipcode.csv')?>">Download Sample Data</a>

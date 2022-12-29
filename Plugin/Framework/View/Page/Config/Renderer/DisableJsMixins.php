@@ -25,10 +25,13 @@ class DisableJsMixins
     private $pageAssets;
 
     /**
-     * @var ConfigProvider
+     * @var ZipCodeProvider
      */
     private $zipCodeConfig;
 
+    /**
+     * @var Data
+     */
     private $dataHelper;
 
     public function __construct(
@@ -44,11 +47,10 @@ class DisableJsMixins
     }
 
     /**
-     * Disable Amasty OSC js mixins if module is disabled
+     * Disable Magebytes ZipCodeValidator js mixins if module is disabled
      *
      * @param Renderer $subject
      * @param array $resultGroups
-     *
      * @return array
      */
     public function beforeRenderAssets(Renderer $subject, $resultGroups = [])
@@ -59,7 +61,6 @@ class DisableJsMixins
             $this->pageAssets->insert($file, $asset, 'requirejs/require.js');
             return [$resultGroups];
         }
-
         return [$resultGroups];
     }
 

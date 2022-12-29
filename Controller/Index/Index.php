@@ -10,7 +10,7 @@ use Magebytes\ZipCodeValidator\Helper\Data as DataHelper;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magebytes\ZipCodeValidator\Model\ZipCodeFactory;
+use Magebytes\ZipCodeValidator\Model\ZipFilter;
 
 /*
  * Class Index
@@ -18,8 +18,7 @@ use Magebytes\ZipCodeValidator\Model\ZipCodeFactory;
  */
 
 class Index extends Action
-{
-    protected $zipCodeFactory;    
+{ 
     /**
      * @var ProductModel
      */
@@ -40,39 +39,31 @@ class Index extends Action
         Context $context,
         ProductFactory $productFactory,
         DataHelper $dataHelper,
-        ZipCodeFactory $zipCodeFactory
+        ZipFilter $zipFilter
     ) {
         parent::__construct($context);
         $this->productFactory = $productFactory;
         $this->dataHelper = $dataHelper;
-        $this->zipCodeFactory = $zipCodeFactory;
+        $this->zipFilter = $zipFilter;
     }
 
     public function execute()
     {
-
-        $zipcode = $this->getRequest()->getParam('zipcode');
-        $resultPage = $this->zipCodeFactory->create();
-        $collection = $resultPage->getCollection();
-        $collection = $collection->addFieldToSelect('zip_code')->addFieldToFilter('zip_code',['eq' => $zipcode])->addFieldToFilter('status',array('eq'=>'1'));
         $response = [];
         try {
-            if(!$this->getRequest()->isAjax()){
-                throw new \Exception("Invalid Request. Try again.");
-            }
-
-            if(!$zipcode = $this->getRequest()->getParam('zipcode')){
-                throw new \Exception("Pease enter zipcode");
+            $zipcode = $this->zipFilter->getZipCodeData();
+            if(!$this->zipFilter->getZipCodeData()){
+                throw new \Exception("Pease enter the zipcode");
             }
 
             $productId = $this->getRequest()->getParam('id', 0);
             $product = $this->productFactory->create()->load($productId);
 
             if(!$product->getId()){
-                throw new \Exception("Product not found");
+                throw new \Exception("Product is not found");
             }
 
-            $zipData = $collection->getData();
+            $zipData = $this->zipFilter->getZipCollection()->getData();
             if($zipData){
                 $response['type'] = 'success';
                 $response['message'] = __($this->dataHelper->getSuccessMessage(),$zipcode);  

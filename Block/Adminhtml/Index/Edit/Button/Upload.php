@@ -22,53 +22,10 @@ class Upload extends Generic implements ButtonProviderInterface
             'label' => __('Save'),
             'class' => 'save primary',
             'data_attribute' => [
-                'mage-init' => [
-                    'buttonAdapter' => [
-                        'actions' => [
-                            [
-                                'targetName' => 'mb_zipcode_csv_form.mb_zipcode_csv_form',
-                                'actionName' => 'save',
-                                'params' => [
-                                    false
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                'mage-init' => ['button' => ['event' => 'save']],
+                'form-role' => 'save',
             ],
-            'class_name' => Container::SPLIT_BUTTON,
-            'options' => $this->getOptions(),
+            'sort_order' => 90,
         ];
-    }
-
-    /**
-     * Retrieve options
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-
-        $options[] = [
-            'id_hard' => 'save_and_close',
-            'label' => __('Save & Close'),
-            'data_attribute' => [
-                'mage-init' => [
-                    'buttonAdapter' => [
-                        'actions' => [
-                            [
-                                'targetName' => 'mb_zipcode_csv_form.mb_zipcode_csv_form',
-                                'actionName' => 'save',
-                                'params' => [
-                                    true
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ],
-        ];
-
-        return $options;
     }
 }

@@ -29,25 +29,25 @@ class MassDelete extends \Magento\Backend\App\Action
 
     public function execute()
     {
-        $jobData = $this->collectionFactory->create();
+        $values = $this->collectionFactory->create();
 
-        foreach ($jobData as $value) {
-            $templateId[]=$value['entity_id'];
+        foreach ($values as $value) {
+            $valueId[]=$value['entity_id'];
         }
         $parameterData = $this->getRequest()->getParams('entity_id');
-        $selectedAppsid = $this->getRequest()->getParams('entity_id');
+        $parameterId = $this->getRequest()->getParams('entity_id');
         if (array_key_exists("selected", $parameterData)) {
-            $selectedAppsid = $parameterData['selected'];
+            $parameterId = $parameterData['selected'];
         }
         if (array_key_exists("excluded", $parameterData)) {
             if ($parameterData['excluded'] == 'false') {
-                $selectedAppsid = $templateId;
+                $parameterId = $valueId;
             } else {
-                $selectedAppsid = array_diff($templateId, $parameterData['excluded']);
+                $parameterId = array_diff($valueId, $parameterData['excluded']);
             }
         }
         $collection = $this->collectionFactory->create();
-        $collection->addFieldToFilter('entity_id', ['in'=>$selectedAppsid]);
+        $collection->addFieldToFilter('entity_id', ['in'=>$parameterId]);
         $delete = 0;
         $model=[];
         foreach ($collection as $item) {

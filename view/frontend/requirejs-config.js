@@ -4,6 +4,8 @@
 
 var magebytes_zipcodevalidator_enable = !window.magebytes_zipcodevalidator_disabled;
 
+var config;
+
 config = {
     config: {
         mixins: {

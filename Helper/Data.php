@@ -27,7 +27,6 @@ class Data extends AbstractHelper
         Context $context
     ) {
         parent::__construct($context);
-        // $this->_scopeConfig = $context->getScopeConfig();
     }
 
     /**
