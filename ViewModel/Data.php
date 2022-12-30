@@ -12,7 +12,6 @@ use Magento\Framework\View\Element\Template\Context;
 use Magebytes\ZipCodeValidator\Helper\Data as DataHelper;
 
 /**
- * Class Data
  * @package Magebytes\ZipCodeValidator\ViewModel
  */
 
@@ -35,7 +34,6 @@ class Data implements ArgumentInterface
         DataHelper $dataHelper,
         $data = []
     ) {
-        // parent::__construct($context, $data);
         $this->_registry = $registry;
         $this->dataHelper = $dataHelper;
     }

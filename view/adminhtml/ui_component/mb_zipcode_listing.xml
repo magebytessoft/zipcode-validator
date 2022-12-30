@@ -103,11 +103,9 @@
                 <label translate="true">Country</label>
             </settings>
         </column>
-        <column name="state" component="Magento_Ui/js/grid/columns/select" >
+        <column name="state" class="Magebytes\ZipCodeValidator\Ui\Component\Listing\Column\State">
             <settings>
-                <filter>select</filter>
-                <options class="Magento\Directory\Model\ResourceModel\Region\Collection"/>
-                <dataType>select</dataType>
+                <filter>text</filter>
                 <label translate="true">State</label>
             </settings>
         </column>

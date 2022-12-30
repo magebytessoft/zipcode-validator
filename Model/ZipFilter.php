@@ -1,7 +1,6 @@
 <?php
 namespace Magebytes\ZipCodeValidator\Model;
 
-// use Magebytes\ZipCodeValidator\Model\ZipCodeFactory;
 use Magento\Framework\App\RequestInterface;
 
 class ZipFilter extends \Magento\Framework\View\Element\Template
