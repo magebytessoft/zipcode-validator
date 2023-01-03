@@ -1,3 +1,7 @@
+### Uses
+
+* This module use the zipcode to check the product is available or not in this zipcode. 
+
 # zipcode-validator
 Delivery Availability Checker for Magento 2
 

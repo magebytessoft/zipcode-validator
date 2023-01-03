@@ -14,9 +14,6 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-        "php": "^7.4|^8.1.*"
-    },
     "autoload": {
         "files": [
             "registration.php"
